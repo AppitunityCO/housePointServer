@@ -355,4 +355,6 @@ router.get("/properties", (req, res) => {
     }
   });
 });
+
+
 module.exports = router;
