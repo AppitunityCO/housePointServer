@@ -848,7 +848,7 @@ PropertyPlaces.SalePropertyNewMaadi = (type) => {
     inner join image on image.cat = property.Id_property 
     inner join property_type on property_type.type_id=property.Property_type  
     inner join furniture on furniture.ffid=property.Furniture_status 
-     where  Area=1 AND Subarea=4 AND Property_for='Sale' And IN(type_ar_slug , type_en_slug)
+     where  Area=1 AND Subarea=4 AND Property_for='Sale' And ? IN(type_ar_slug , type_en_slug)  
      group by image.cat
      order by inhome desc, xdat desc
      `,
@@ -867,15 +867,15 @@ PropertyPlaces.SalePropertyMaadiDegla = (type) => {
   return new Promise((resolve, reject) => {
     pool.query(
       `
-      select * from property
-      inner join maincat on maincat.mid=property.Area 
-      inner join subcat on subcat.sid=property.Subarea  
-      inner join image on image.cat = property.Id_property 
-      inner join property_type on property_type.type_id=property.Property_type  
-      inner join furniture on furniture.ffid=property.Furniture_status 
-       where  Area=1 AND Subarea=5 AND Property_for='Sale' And IN(type_ar_slug , type_en_slug)  
-       group by image.cat
-       order by inhome desc, xdat desc
+          select * from property
+    inner join maincat on maincat.mid=property.Area 
+    inner join subcat on subcat.sid=property.Subarea  
+    inner join image on image.cat = property.Id_property 
+    inner join property_type on property_type.type_id=property.Property_type  
+    inner join furniture on furniture.ffid=property.Furniture_status 
+     where  Area=1 AND Subarea=5 AND Property_for='Sale' And  ? IN(type_ar_slug , type_en_slug) 
+     group by image.cat
+     order by inhome desc, xdat desc
      `,
       [type],
       (err, results) => {
@@ -888,6 +888,8 @@ PropertyPlaces.SalePropertyMaadiDegla = (type) => {
   });
 };
 
+
+
 PropertyPlaces.SalePropertyOldMaadi = (type) => {
   return new Promise((resolve, reject) => {
     pool.query(
@@ -898,7 +900,7 @@ PropertyPlaces.SalePropertyOldMaadi = (type) => {
     inner join image on image.cat = property.Id_property 
     inner join property_type on property_type.type_id=property.Property_type  
     inner join furniture on furniture.ffid=property.Furniture_status 
-     where  Area=1 AND Subarea=6 AND Property_for='Sale' And IN(type_ar_slug , type_en_slug)  
+     where  Area=1 AND Subarea=6 AND Property_for='Sale' And ? IN(type_ar_slug , type_en_slug)  
      group by image.cat
      order by inhome desc, xdat desc
      `,
@@ -925,7 +927,7 @@ PropertyPlaces.SalePropertyChouifat = (type) => {
       inner join image on image.cat = property.Id_property 
       inner join property_type on property_type.type_id=property.Property_type  
       inner join furniture on furniture.ffid=property.Furniture_status 
-      where  Area=4 AND Subarea=7 AND Property_for='Sale' And IN(type_ar_slug , type_en_slug) 
+      where  Area=4 AND Subarea=7 AND Property_for='Sale' And ? IN(type_ar_slug , type_en_slug) 
       group by image.cat
        order by inhome desc, xdat desc
        `,
@@ -950,7 +952,7 @@ PropertyPlaces.SalePropertyWestGolf = (type) => {
       inner join image on image.cat = property.Id_property 
       inner join property_type on property_type.type_id=property.Property_type  
       inner join furniture on furniture.ffid=property.Furniture_status 
-      where  Area=4 AND Subarea=8 AND Property_for='Sale' And IN(type_ar_slug , type_en_slug) 
+      where  Area=4 AND Subarea=8 AND Property_for='Sale' And ? IN(type_ar_slug , type_en_slug) 
       group by image.cat
        order by inhome desc, xdat desc
        `,
@@ -975,7 +977,7 @@ PropertyPlaces.SalePropertyFifthSettle = (type) => {
       inner join image on image.cat = property.Id_property 
       inner join property_type on property_type.type_id=property.Property_type  
       inner join furniture on furniture.ffid=property.Furniture_status 
-      where  Area=4 AND Subarea=9 AND Property_for='Sale' And IN(type_ar_slug , type_en_slug) 
+      where  Area=4 AND Subarea=9 AND Property_for='Sale' And ? IN(type_ar_slug , type_en_slug) 
       group by image.cat
        order by inhome desc, xdat desc
        `,
@@ -1000,7 +1002,7 @@ PropertyPlaces.SalePropertyMountainView = (type) => {
       inner join image on image.cat = property.Id_property 
       inner join property_type on property_type.type_id=property.Property_type  
       inner join furniture on furniture.ffid=property.Furniture_status 
-      where  Area=4 AND Subarea=79 AND Property_for='Sale' And IN(type_ar_slug , type_en_slug) 
+      where  Area=4 AND Subarea=79 AND Property_for='Sale' And ? IN(type_ar_slug , type_en_slug) 
       group by image.cat
        order by inhome desc, xdat desc
        `,
@@ -1025,7 +1027,7 @@ PropertyPlaces.SalePropertyLakeView = (type) => {
       inner join image on image.cat = property.Id_property 
       inner join property_type on property_type.type_id=property.Property_type  
       inner join furniture on furniture.ffid=property.Furniture_status 
-      where  Area=4 AND Subarea=78 AND Property_for='Sale' And IN(type_ar_slug , type_en_slug) 
+      where  Area=4 AND Subarea=78 AND Property_for='Sale' And ? IN(type_ar_slug , type_en_slug) 
       group by image.cat
        order by inhome desc, xdat desc
        `,
@@ -1050,7 +1052,7 @@ PropertyPlaces.SalePropertyArabella = (type) => {
       inner join image on image.cat = property.Id_property 
       inner join property_type on property_type.type_id=property.Property_type  
       inner join furniture on furniture.ffid=property.Furniture_status 
-      where  Area=4 AND Subarea=90 AND Property_for='Sale' And IN(type_ar_slug , type_en_slug) 
+      where  Area=4 AND Subarea=90 AND Property_for='Sale' And ? IN(type_ar_slug , type_en_slug) 
       group by image.cat
        order by inhome desc, xdat desc
        `,
@@ -1075,7 +1077,7 @@ PropertyPlaces.SalePropertyFirstSettle = (type) => {
       inner join image on image.cat = property.Id_property 
       inner join property_type on property_type.type_id=property.Property_type  
       inner join furniture on furniture.ffid=property.Furniture_status 
-      where  Area=4 AND Subarea=33 AND Property_for='Sale' And IN(type_ar_slug , type_en_slug) 
+      where  Area=4 AND Subarea=33 AND Property_for='Sale' And ? IN(type_ar_slug , type_en_slug) 
       group by image.cat
        order by inhome desc, xdat desc
        `,
@@ -1100,7 +1102,7 @@ PropertyPlaces.SalePropertyMirageCity = (type) => {
       inner join image on image.cat = property.Id_property 
       inner join property_type on property_type.type_id=property.Property_type  
       inner join furniture on furniture.ffid=property.Furniture_status 
-      where  Area=4 AND Subarea=91 AND Property_for='Sale' And IN(type_ar_slug , type_en_slug) 
+      where  Area=4 AND Subarea=91 AND Property_for='Sale' And ? IN(type_ar_slug , type_en_slug) 
       group by image.cat
        order by inhome desc, xdat desc
        `,
@@ -1125,7 +1127,7 @@ PropertyPlaces.SalePropertyMivida = (type) => {
       inner join image on image.cat = property.Id_property 
       inner join property_type on property_type.type_id=property.Property_type  
       inner join furniture on furniture.ffid=property.Furniture_status 
-      where  Area=4 AND Subarea=89 AND Property_for='Sale' And IN(type_ar_slug , type_en_slug) 
+      where  Area=4 AND Subarea=89 AND Property_for='Sale' And ? IN(type_ar_slug , type_en_slug) 
       group by image.cat
        order by inhome desc, xdat desc
        `,
@@ -1150,7 +1152,7 @@ PropertyPlaces.SalePropertyMadinty = (type) => {
       inner join image on image.cat = property.Id_property 
       inner join property_type on property_type.type_id=property.Property_type  
       inner join furniture on furniture.ffid=property.Furniture_status 
-      where  Area=4 AND Subarea=92 AND Property_for='Sale' And IN(type_ar_slug , type_en_slug) 
+      where  Area=4 AND Subarea=92 AND Property_for='Sale' And ? IN(type_ar_slug , type_en_slug) 
       group by image.cat
        order by inhome desc, xdat desc
        `,
@@ -1175,7 +1177,7 @@ PropertyPlaces.SalePropertyKatamyaDunnes = (type) => {
       inner join image on image.cat = property.Id_property 
       inner join property_type on property_type.type_id=property.Property_type  
       inner join furniture on furniture.ffid=property.Furniture_status 
-      where  Area=4 AND Subarea=81 AND Property_for='Sale' And IN(type_ar_slug , type_en_slug) 
+      where  Area=4 AND Subarea=81 AND Property_for='Sale' And ? IN(type_ar_slug , type_en_slug) 
       group by image.cat
        order by inhome desc, xdat desc
        `,
@@ -1200,7 +1202,7 @@ PropertyPlaces.SalePropertyKatamyaResd = (type) => {
       inner join image on image.cat = property.Id_property 
       inner join property_type on property_type.type_id=property.Property_type  
       inner join furniture on furniture.ffid=property.Furniture_status 
-      where  Area=4 AND Subarea=82 AND Property_for='Sale' And IN(type_ar_slug , type_en_slug) 
+      where  Area=4 AND Subarea=82 AND Property_for='Sale' And ? IN(type_ar_slug , type_en_slug) 
       group by image.cat
        order by inhome desc, xdat desc
        `,
@@ -1225,7 +1227,7 @@ PropertyPlaces.SalePropertyKatamyaHills = (type) => {
       inner join image on image.cat = property.Id_property 
       inner join property_type on property_type.type_id=property.Property_type  
       inner join furniture on furniture.ffid=property.Furniture_status 
-      where  Area=4 AND Subarea=83 AND Property_for='Sale' And IN(type_ar_slug , type_en_slug) 
+      where  Area=4 AND Subarea=83 AND Property_for='Sale' And ? IN(type_ar_slug , type_en_slug) 
       group by image.cat
        order by inhome desc, xdat desc
        `,
@@ -1250,7 +1252,7 @@ PropertyPlaces.SalePropertyVillageGate = (type) => {
       inner join image on image.cat = property.Id_property 
       inner join property_type on property_type.type_id=property.Property_type  
       inner join furniture on furniture.ffid=property.Furniture_status 
-      where  Area=4 AND Subarea=84 AND Property_for='Sale' And IN(type_ar_slug , type_en_slug) 
+      where  Area=4 AND Subarea=84 AND Property_for='Sale' And ? IN(type_ar_slug , type_en_slug) 
       group by image.cat
        order by inhome desc, xdat desc
        `,
@@ -1275,7 +1277,7 @@ PropertyPlaces.SalePropertyTheVillage = (type) => {
       inner join image on image.cat = property.Id_property 
       inner join property_type on property_type.type_id=property.Property_type  
       inner join furniture on furniture.ffid=property.Furniture_status 
-      where  Area=4 AND Subarea=85 AND Property_for='Sale' And IN(type_ar_slug , type_en_slug) 
+      where  Area=4 AND Subarea=85 AND Property_for='Sale' And ? IN(type_ar_slug , type_en_slug) 
       group by image.cat
        order by inhome desc, xdat desc
        `,
@@ -1300,7 +1302,7 @@ PropertyPlaces.SalePropertyKatamyaPlaza = (type) => {
       inner join image on image.cat = property.Id_property 
       inner join property_type on property_type.type_id=property.Property_type  
       inner join furniture on furniture.ffid=property.Furniture_status 
-      where  Area=4 AND Subarea=86 AND Property_for='Sale' And IN(type_ar_slug , type_en_slug) 
+      where  Area=4 AND Subarea=86 AND Property_for='Sale' And ? IN(type_ar_slug , type_en_slug) 
       group by image.cat
        order by inhome desc, xdat desc
        `,
@@ -1325,7 +1327,7 @@ PropertyPlaces.SalePropertyStonePark = (type) => {
       inner join image on image.cat = property.Id_property 
       inner join property_type on property_type.type_id=property.Property_type  
       inner join furniture on furniture.ffid=property.Furniture_status 
-      where  Area=4 AND Subarea=87 AND Property_for='Sale' And IN(type_ar_slug , type_en_slug) 
+      where  Area=4 AND Subarea=87 AND Property_for='Sale' And ? IN(type_ar_slug , type_en_slug) 
       group by image.cat
        order by inhome desc, xdat desc
        `,
