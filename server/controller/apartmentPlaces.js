@@ -848,7 +848,7 @@ PropertyPlaces.SalePropertyNewMaadi = (type) => {
     inner join image on image.cat = property.Id_property 
     inner join property_type on property_type.type_id=property.Property_type  
     inner join furniture on furniture.ffid=property.Furniture_status 
-     where  Area=1 AND Subarea=4 AND Property_for='Sale' And IN(type_ar_slug , type_en_slug)  
+     where  Area=1 AND Subarea=4 AND Property_for='Sale' And IN(type_ar_slug , type_en_slug)
      group by image.cat
      order by inhome desc, xdat desc
      `,
@@ -867,15 +867,15 @@ PropertyPlaces.SalePropertyMaadiDegla = (type) => {
   return new Promise((resolve, reject) => {
     pool.query(
       `
-          select * from property
-    inner join maincat on maincat.mid=property.Area 
-    inner join subcat on subcat.sid=property.Subarea  
-    inner join image on image.cat = property.Id_property 
-    inner join property_type on property_type.type_id=property.Property_type  
-    inner join furniture on furniture.ffid=property.Furniture_status 
-     where  Area=1 AND Subarea=5 AND Property_for='Sale' And IN(type_ar_slug , type_en_slug)  
-     group by image.cat
-     order by inhome desc, xdat desc
+      select * from property
+      inner join maincat on maincat.mid=property.Area 
+      inner join subcat on subcat.sid=property.Subarea  
+      inner join image on image.cat = property.Id_property 
+      inner join property_type on property_type.type_id=property.Property_type  
+      inner join furniture on furniture.ffid=property.Furniture_status 
+       where  Area=1 AND Subarea=5 AND Property_for='Sale' And IN(type_ar_slug , type_en_slug)  
+       group by image.cat
+       order by inhome desc, xdat desc
      `,
       [type],
       (err, results) => {
